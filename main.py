@@ -1,8 +1,26 @@
+import berserk
+import knowledge 
+from datetime import date, timedelta
 import logging
 import logging.handlers
 import os
 
-import requests
+#account = knowledge.account()
+try:
+    token = os.environ["TOKEN"]
+except KeyError:
+    SOME_SECRET = "Token not available!"
+    #logger.info("Token not available!")
+    #raise
+#session = berserk.TokenSession(account.token)
+session = berserk.TokenSession(token)
+client = berserk.Client(session=session)
+eric = client.account.get()
+start_date = date.today() - timedelta(days=1)
+end_date = date.today()
+data = client.users.get_public_data('icererci')
+blitz_rating = data['perfs']['blitz']['rating']
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -16,19 +34,12 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(messag
 logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
-try:
-    SOME_SECRET = os.environ["SOME_SECRET"]
-except KeyError:
-    SOME_SECRET = "Token not available!"
-    #logger.info("Token not available!")
-    #raise
 
 
-if __name__ == "__main__":
-    logger.info(f"Token value: {SOME_SECRET}")
 
-    r = requests.get('https://weather.talkpython.fm/api/weather/?city=Berlin&country=DE')
-    if r.status_code == 200:
-        data = r.json()
-        temperature = data["forecast"]["temp"]
-        logger.info(f'Weather in Berlin: {temperature}')
+#if __name__ == "__main__":
+    #logger.info(f"Token value: {SOME_SECRET}")
+
+logger.info(f'Eric\'s blitz rating: {blitz_rating}')
+#games = client.games.export_by_player('icererci', since=start_date, until=end_date)
+
