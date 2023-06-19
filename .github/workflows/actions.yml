@@ -3,7 +3,7 @@ name: run main.py
 on: push
   #schedule:
     #- cron: '0 8 * * *' # At 08:00 daily
-permissions: write-all
+permissions: write-all # my add
 jobs:
   build:
     runs-on: ubuntu-latest
