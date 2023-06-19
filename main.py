@@ -4,7 +4,6 @@ import logging
 import logging.handlers
 import os
 
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger_file_handler = logging.handlers.RotatingFileHandler(
