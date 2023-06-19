@@ -32,12 +32,6 @@ end_date = date.today()
 data = client.users.get_public_data('icererci')
 blitz_rating = data['perfs']['blitz']['rating']
 
-
-
-
-
-
-
 #if __name__ == "__main__":
     #logger.info(f"Token value: {SOME_SECRET}")
 
