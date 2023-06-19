@@ -1,3 +1,5 @@
+#Thanks to patrickloeber for the walk-thru!
+
 # Schedule a Python script with GitHub Actions
 
 **Watch the video tutorial:**
