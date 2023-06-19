@@ -9,9 +9,9 @@ import os
 try:
     token = os.environ["TOKEN"]
 except KeyError:
-    SOME_SECRET = "Token not available!"
-    #logger.info("Token not available!")
-    #raise
+    token = "Token not available!"
+    logger.info("Token not available!")
+    raise
 #session = berserk.TokenSession(account.token)
 session = berserk.TokenSession(token)
 client = berserk.Client(session=session)
